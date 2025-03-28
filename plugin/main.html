@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	
+	</head>
+	<body>
+		<script type="text/javascript">
+			console.log("MAIN");
+			
+			window.connectMiraBoxSDSocket = function connectMiraBoxSDSocket(port, uuid, event, info) {
+				console.log("INIT");
+				
+				websocket = new WebSocket("ws://127.0.0.1:" + port);
+				
+				websocket.onerror = (evt) => {
+					console.warn('WEBOCKET ERROR', evt, evt.data);
+				};
+
+				websocket.onclose = (evt) => {
+					console.warn('[STREAMDECK]***** WEBOCKET CLOSED **** reason:', evt);
+				};
+
+				websocket.onopen = () => {
+					console.warn('CON');
+					websocket.send(JSON.stringify({ event: event, uuid: uuid }));
+				};
+				
+				websocket.onmessage = e => {
+					const data = JSON.parse(e.data);
+					console.log(data, e);
+				};
+			}
+		</script>
+	</body>
+</html>

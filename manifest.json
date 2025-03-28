@@ -1,0 +1,46 @@
+{
+	"Version":		"1.0",
+	"APIVersion":	"1.0",
+	"SDKVersion":	1,
+	"Name":			"Knuddels",
+	"Category":		"Knuddels",
+	"Author":		"Adrian Preuß",
+	"Icon":			"static/icon",
+	"CategoryIcon":	"static/category",
+	"URL":			"https://github.com/Bizarrus/Knuddels-StreamDeck/",
+	"Description":	"Some tools for Knuddels.",
+	"CodePath":		"plugin/main.html",
+	"OS":			[{
+		"Platform":			"mac",
+		"MinimumVersion":	"10.11"
+	}, {
+		"Platform":			"windows",
+		"MinimumVersion":	"7"
+	}],
+	"Actions": [{
+		"UUID":						"com.github.bizarrus.knuddelsadmin.admincall",
+		"Icon":						"static/icons/admincall",
+		"Name":						"Meldung",
+		"Tooltip":					"Ruft das Meldesystem auf. Ist eine Meldenummer kopiert, wird die Admincall-Komponente direkt aufgerufen.",
+		"PropertyInspectorPath":	"propertyInspector/admincall/admincall.html",
+		"state":					0,
+		"States": [{
+			"Image":			"static/icons/admincall"
+		}, {
+			"Image":			"static/icons/admincall_active"
+		}],
+		"Settings":					{
+			"auto_nicknames":		true,
+			"auto_admincall_id":	true
+		},
+		"UserTitleEnabled":			false,
+		"SupportedInMultiActions":	false,
+		"Controllers": [
+			"Keypad",
+			"Information",
+			"SecondaryScreen",
+			"Knob",
+			"btn"
+		]
+	}]
+}
