@@ -17,12 +17,15 @@
 		"Platform":			"windows",
 		"MinimumVersion":	"7"
 	}],
+	"Nodejs": {
+		"Version": "20"
+	},
 	"Actions": [{
 		"UUID":						"com.github.bizarrus.knuddelsadmin.admincall",
 		"Icon":						"static/icons/admincall",
 		"Name":						"Meldung",
 		"Tooltip":					"Ruft das Meldesystem auf. Ist eine Meldenummer kopiert, wird die Admincall-Komponente direkt aufgerufen.",
-		"PropertyInspectorPath":	"propertyInspector/admincall/admincall.html",
+		"PropertyInspectorPath":	"actions/admincall/admincall.html",
 		"state":					0,
 		"States": [{
 			"Image":			"static/icons/admincall"

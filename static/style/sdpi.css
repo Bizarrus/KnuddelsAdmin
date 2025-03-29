@@ -46,7 +46,7 @@ table>caption{margin:2px}
 .list,.sdpi-item[type="list"]{align-items:baseline}
 .sdpi-item-label{text-align:right;flex:none;width:94px;padding-right:4px;font-weight:600}
 .win .sdpi-item-label,.sdpi-item-label>small{font-weight:normal}
-.sdpi-item-label:after{content:":"}
+.sdpi-item-label:not(:empty):after{content:":"}
 .sdpi-item-label.empty:after{content:""}
 .sdpi-test,.sdpi-item-value{flex:1 0 0;margin-right:14px;margin-left:4px;justify-content:space-evenly}
 canvas.sdpi-item-value{max-width:144px;max-height:144px;width:144px;height:144px;margin:0 auto;cursor:pointer}
@@ -228,3 +228,10 @@ input[type="range"].colorbrightness::-webkit-slider-thumb,input[type="range"].co
 .sdpi-info-label{display:inline-block;user-select:none;position:absolute;height:15px;width:auto;text-align:center;border-radius:4px;min-width:44px;max-width:80px;background:white;font-size:11px;color:black;z-index:1000;box-shadow:0px 0px 12px rgba(0,0,0,.8);padding:2px}
 .sdpi-info-label.hidden{opacity:0;transition:opacity 0.25s linear}
 .sdpi-info-label.shown{position:absolute;opacity:1;transition:opacity 0.25s ease-out}
+
+.sdpi-item-description {
+    padding: 0 0 0 21px;
+    font-weight: normal;
+    font-size: 12px;
+    margin: -1px 0 0 0;
+}

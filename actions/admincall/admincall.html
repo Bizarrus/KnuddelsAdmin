@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="../../static/style/sdpi.css" />
+	</head>
+	<body>
+		<div type="checkbox" class="sdpi-item">
+			<div class="sdpi-item-label"></div>
+			<div class="sdpi-item-value">
+				<span class="sdpi-item-child">
+					<input id="auto_nicknames" type="checkbox" value="on" CHECKED />
+					<label for="auto_nicknames"><span></span>Auto Nicknamen</label>
+					<p class="sdpi-item-description">Ruft das Meldesystem mit dem markierten Nicknamen auf.</p>
+				</span>
+			</div>
+		</div>
+		<div type="checkbox" class="sdpi-item">
+			<div class="sdpi-item-label"></div>
+			<div class="sdpi-item-value">
+				<span class="sdpi-item-child">
+					<input id="auto_admincall_id" type="checkbox" value="on" CHECKED />
+					<label for="auto_admincall_id"><span></span>Auto Meldungen</label>
+					<p class="sdpi-item-description">Ruft die jeweilige Meldung auf, wenn die Melde-ID markierten ist.</p>
+				</span>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			class Admincall {
+				Socket		= null;
+				Context		= null;
+				Settings	= {
+					auto_nicknames:		true,
+					auto_admincall_id:	true
+				};
+				
+				constructor() {
+					document.querySelectorAll('input').forEach((input) => {
+						input.addEventListener('change', (event) => {
+							let element					= event.target;
+							this.Settings[element.id]	= element.checked;
+							
+							this.send({
+								event:		'setSettings',
+								context:	this.getContext(),
+								payload:	this.Settings
+							});
+						});
+					});
+				}
+				
+				getContext() {
+					return this.Context;
+				}
+				
+				send(data) {
+					this.Socket.send(JSON.stringify(data));
+				}
+				
+				connect(port, uuid, event, info, action) {
+					console.log('connect', {
+						port,
+						uuid, 
+						event, 
+						inInfo: JSON.parse(info), 
+						inActionInfo: JSON.parse(action)
+					});
+					
+					this.Socket = new WebSocket('ws://127.0.0.1:' + port);
+					
+					this.Socket.onopen	= () => {
+						console.log('[Open]', { event: event, uuid: uuid });
+						this.Socket.send(JSON.stringify({ event: event, uuid: uuid }));
+					};
+					
+					this.Socket.onclose	= (event) => {
+						console.log('[Close]', event);
+					};
+					
+					this.Socket.onerror	= (event) => {
+						console.log('[Error]', event, event.data);
+					};
+					
+					this.Socket.onmessage = (e) => {
+						let packet = JSON.parse(e.data);
+						
+						if(packet.action !== 'com.github.bizarrus.knuddelsadmin.admincall') {
+							return;
+						}
+						
+						console.log('[Message]', packet.action, packet.event, packet);
+						
+						switch(packet.event) {
+							case 'didReceiveSettings':
+								this.Settings = packet.payload.settings;
+								
+								Object.keys(this.Settings).forEach((key) => {
+									let value										= this.Settings[key];
+									document.querySelector('input#' + key).checked	= value;
+								});
+								
+								console.warn(JSON.stringify(this.Settings));
+							break;
+						}
+						
+						this.Context = packet.context;
+					};
+				}
+			}
+			
+			let instance							= new Admincall();
+			window.connectSDSocket					= instance.connect.bind(instance);
+			window.connectMiraBoxSDSocket			= instance.connect.bind(instance);
+			window.connectMiraBoxSDSocket			= instance.connect.bind(instance);
+			window.connectSocket					= instance.connect.bind(instance);
+			window.connectElgatoStreamDeckSocket	= instance.connect.bind(instance);
+		</script>
+	</body>
+</html>
