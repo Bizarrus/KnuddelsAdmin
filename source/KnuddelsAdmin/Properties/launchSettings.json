@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "KnuddelsAdmin (with Param)": {
+      "commandName": "Project",
+      "commandLineArgs": "-port 18618 -pluginUUID XI8XO0ZYYEGY90FJ3S9Q10EQNM77W6BB -registerEvent registerPlugin -info \"{\\\"application\\\":{\\\"font\\\":\\\"HarmonyOS Sans\\\",\\\"language\\\":\\\"de\\\",\\\"platform\\\":\\\"windows\\\",\\\"platformVersion\\\":\\\"10.0.26100\\\",\\\"version\\\":\\\"3.10.187.1230\\\"},\\\"colors\\\":{\\\"buttonMouseOverBackgroundColor\\\":\\\"#464646FF\\\",\\\"buttonPressedBackgroundColor\\\":\\\"#303030FF\\\",\\\"buttonPressedBorderColor\\\":\\\"#646464FF\\\",\\\"buttonPressedTextColor\\\":\\\"#969696FF\\\",\\\"highlightColor\\\":\\\"#0078FFFF\\\"},\\\"devicePixelRatio\\\":1,\\\"devices\\\":[{\\\"id\\\":\\\"18XK1JK02PZ36GF54QPF04DY01821WVY\\\",\\\"name\\\":\\\"StreamDock[293S]\\\",\\\"size\\\":{\\\"columns\\\":6,\\\"rows\\\":3},\\\"type\\\":0}],\\\"plugin\\\":{\\\"name\\\":\\\"DEBUGTEST\\\",\\\"uuid\\\":\\\"com.github.bizarrus.knuddelsadmin\\\",\\\"version\\\":\\\"1.0\\\"}}\"",
+      "nativeDebugging": true
+    }
+  }
+}

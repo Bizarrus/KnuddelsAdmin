@@ -1,24 +1,20 @@
 {
-	"Version":		"1.0",
-	"APIVersion":	"1.0",
-	"SDKVersion":	1,
-	"Name":			"Knuddels",
-	"Category":		"Knuddels",
-	"Author":		"Adrian Preuß",
-	"Icon":			"static/icon",
-	"CategoryIcon":	"static/category",
-	"URL":			"https://github.com/Bizarrus/Knuddels-StreamDeck/",
-	"Description":	"Some tools for Knuddels.",
-	"CodePath":		"plugin/main.html",
+	"Version":			"1.0",
+	"SDKVersion":		1,
+	"Name":				"Knuddels",
+	"Category":			"Knuddels",
+	"Author":			"Adrian Preuß",
+	"Icon":				"static/icon",
+	"CategoryIcon":		"static/category",
+	"URL":				"https://github.com/Bizarrus/Knuddels-StreamDeck/",
+	"Description":		"Some tools for Knuddels.",
+	"CodePath":			"source/KnuddelsAdmin/bin/Release/net9.0-windows7.0/KnuddelsAdmin.exe",
 	"OS":			[{
-		"Platform":			"mac",
-		"MinimumVersion":	"10.11"
-	}, {
 		"Platform":			"windows",
 		"MinimumVersion":	"7"
 	}],
-	"Nodejs": {
-		"Version": "20"
+	"Software": {
+		"MinimumVersion":	"3.10"
 	},
 	"Actions": [{
 		"UUID":						"com.github.bizarrus.knuddelsadmin.admincall",
